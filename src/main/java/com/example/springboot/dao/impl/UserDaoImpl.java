@@ -10,9 +10,9 @@ public class UserDaoImpl implements UserDao {
     @Override
     public User getUser(){
         User user = new User();
-        user.setId(1);
-        user.setName("张三");
-        user.setAge(12);
+        user.setId(2);
+        user.setName("石凯林");
+        user.setAge(23);
         return user;
     }
 }
