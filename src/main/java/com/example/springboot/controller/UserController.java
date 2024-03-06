@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class UserController {
-    @Autowired
-    private UserService userService;
+    //@Autowired
+    //private UserService userService;
     @RequestMapping("/")
-    @ResponseBody
+    //@ResponseBody
     public String getUser(){
-        User user = userService.getUser();
-        return user.toString();
+        //User user = userService.getUser();
+        return "index";
     }
 
 }
