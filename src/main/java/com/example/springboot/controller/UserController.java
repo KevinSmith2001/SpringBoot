@@ -14,9 +14,17 @@ public class UserController {
     //private UserService userService;
     @RequestMapping("/")
     //@ResponseBody
-    public String getUser(){
+    public String getUser() {
         //User user = userService.getUser();
         return "index";
+
     }
 
+    @RequestMapping("/666")
+    //@ResponseBody
+    public String e() {
+        //User user = userService.getUser();
+        return "customerList";
+
+    }
 }
