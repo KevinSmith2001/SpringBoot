@@ -5,11 +5,10 @@ import com.example.springboot.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.ObjectStreamClass;
 import java.util.HashMap;
 import java.util.Map;
@@ -26,7 +25,7 @@ public class UserController {
 
     }
 
-    @RequestMapping(value = "/userList")
+    @RequestMapping(value = "/userList1")
     protected ModelAndView userList() {
 
         User c1 = new User();
@@ -46,4 +45,34 @@ public class UserController {
         ModelAndView modelAndView = new ModelAndView("customerList", model);
         return modelAndView;
     }
-}
+        @RequestMapping(value = "/update")
+        protected String update () {
+            return "redirect:userList1";
+        }
+        @RequestMapping(value = "/userstringparam")
+        @ResponseBody
+        public String getUserByParam(
+                @RequestParam(value = "id",defaultValue = "123")String sid,
+                @RequestParam(value = "name",defaultValue = "Kevin")String sname,
+                @RequestParam(value = "age",defaultValue = "18")String sage){
+        return sid+sname+sage;
+        }
+        @RequestMapping("/user")
+        @ResponseBody
+        public String html(User user){
+            System.out.println(user.toString());
+            return user.toString();
+        }
+        @RequestMapping("/userhttp")
+        @ResponseBody
+        public String html1(HttpServletRequest request){
+            System.out.println(request.getParameter("name"));
+            return request.getParameter("name");
+        }
+        @RequestMapping("/user/{id}/{name}")
+        @ResponseBody
+    public String html2(@PathVariable("id") String id,@PathVariable("name") String name){
+        return  id+name;
+        }
+
+    }
