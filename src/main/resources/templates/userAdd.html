@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>$Title$</title>
+
+</head>
+<body>
+<form method="post" action="/from/list">
+    <div class="form-body">
+        <h1>添加一个用户</h1>
+        <div class="input-box">
+            <label>用户名：</label>
+            <input type="text"
+            name="userName" required>
+        </div>
+        <div class="input-box">
+            <label>朋友：</label>
+            <input type="checkbox" name="friends" th:value="张三" th:text="张三">
+            <input type="checkbox" name="friends" th:value="李四" th:text="李四">
+            <input type="checkbox" name="friends" th:value="王五" th:text="王五">
+            <input type="checkbox" name="friends" th:value="赵六" th:text="赵六">
+        </div>
+        <div input class="input-box">
+            <label>爱好：</label>
+            <th:block th:each="hobby:${hobbys}">
+                <input name="hobby"
+                       type="checkbox"
+                       th:value="${hobby.value}"
+                       th:text="${hobby.value}">
+            </th:block>
+        </div>
+    </div>
+    <div class="input-box"></div>
+
+</form>
+</body>
+</html>
+
+    
