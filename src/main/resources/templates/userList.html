@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>$Title$</title>
+</head>
+<body>
+<h1>用户列表</h1>
+<div class="button">
+    <a th:href="@{${'/form/input'}}" th:text="继续添加"></a>
+</div>
+<table border="1">
+    <tr>
+        <th>用户名</th>
+        <th>兴趣爱好</th>
+        <th>朋友</th>
+        <th>职业</th>
+        <th>户籍</th>
+        <th>个人描述</th>
+    </tr>
+    <tr th:each="user : ${users}">
+        <td>
+            <th:block th:text="${user.username}"/>
+        </td>
+        <td >
+            <th:block th:each="hobby : ${user.hobby}">
+                <span th:text="${hobby}"/>
+            </th:block>
+        </td>
+
+        <td >
+            <th:block th:each="friend : ${user.friends}" >
+                <span th:text="${friend}"></span>
+            </th:block>
+        </td>
+        <td>
+            <th:block th:text="${user.carrer}"/>
+        </td>
+        <td>
+            <th:block th:text="${user.houseRegister}"/>
+        </td>
+        <td>
+            <th:block th:text="${user.remark}"/>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
+
+    
